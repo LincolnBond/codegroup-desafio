@@ -1,5 +1,6 @@
 package com.codegroup.desafio.service;
 
+import com.codegroup.desafio.Constantes;
 import com.codegroup.desafio.StatusProjeto;
 import com.codegroup.desafio.exception.ExclusionNotAllowedException;
 import com.codegroup.desafio.exception.ResourceNotFoundException;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 @Service
 public class ProjetoServiceImpl implements ProjetoService{
@@ -34,7 +36,7 @@ public class ProjetoServiceImpl implements ProjetoService{
      */
     public Projeto findById(Long projetoId) throws ResourceNotFoundException {
 
-        Projeto projeto = this.projetoRepository.findById(projetoId).orElseThrow(() -> new ResourceNotFoundException("Projeto não encontrado para o ID: " + projetoId));
+        Projeto projeto = this.projetoRepository.findById(projetoId).orElseThrow(() -> new ResourceNotFoundException(Constantes.PROJETO_NAO_ENCONTRADO  + projetoId));
 
         return projeto;
     }
@@ -44,7 +46,7 @@ public class ProjetoServiceImpl implements ProjetoService{
      * @param projeto
      * @return
      */
-    public Projeto createProjeto(Projeto projeto) {
+    public Projeto saveProjeto(Projeto projeto) {
 
         return this.projetoRepository.save(projeto);
     }
@@ -59,7 +61,7 @@ public class ProjetoServiceImpl implements ProjetoService{
      */
     public Projeto updateProjeto( Long projetoId, Projeto projeto) throws ResourceNotFoundException {
 
-        Projeto projetoDB = projetoRepository.findById(projetoId).orElseThrow(() -> new ResourceNotFoundException("Projeto não encontrado para o ID :: " + projetoId));
+        Projeto projetoDB = projetoRepository.findById(projetoId).orElseThrow(() -> new ResourceNotFoundException(Constantes.PROJETO_NAO_ENCONTRADO + projetoId));
         projetoDB.setNome(projeto.getNome());
         projetoDB.setDataInicio(projeto.getDataInicio());
         projetoDB.setDataFim(projeto.getDataFim());
@@ -82,7 +84,7 @@ public class ProjetoServiceImpl implements ProjetoService{
      */
     public Map<String, Boolean> deleteProjeto(Long projetoId) throws ResourceNotFoundException, ExclusionNotAllowedException {
 
-        Projeto projeto = projetoRepository.findById(projetoId).orElseThrow(() -> new ResourceNotFoundException("Projeto não encontrado para o ID: " + projetoId));
+        Projeto projeto = projetoRepository.findById(projetoId).orElseThrow(() -> new ResourceNotFoundException(Constantes.PROJETO_NAO_ENCONTRADO + projetoId));
 
         validaStatus(projetoId, projeto);
 
@@ -103,7 +105,7 @@ public class ProjetoServiceImpl implements ProjetoService{
 
         //Clean code: Evitar códigos Hard-Coded (Usar Constantes e ENUM)
         if(projeto.getStatus().equals(StatusProjeto.INICIADO.getStatus()) || projeto.getStatus().equals(StatusProjeto.ANDAMENTO.getStatus()) || projeto.getStatus().equals(StatusProjeto.ENCERRADO.getStatus())){
-            throw new ExclusionNotAllowedException("Projeto está com o status de INICIADO, ANDAMENTO ou ENCERRADO. ProjetoID: " + projetoId);
+            throw new ExclusionNotAllowedException(Constantes.PROJETO_STATUS_INICIADO);
         }
     }
 }
