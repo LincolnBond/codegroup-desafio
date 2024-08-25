@@ -14,8 +14,9 @@ public interface ProjetoService {
 
     public Projeto findById(Long projetoId) throws ResourceNotFoundException;
 
-    public Projeto createProjeto(Projeto projeto);
+    public Projeto saveProjeto(Projeto projeto);
 
     public Projeto updateProjeto(Long projetoId, Projeto projeto) throws ResourceNotFoundException;
+
     public Map<String, Boolean> deleteProjeto(Long projetoId) throws ResourceNotFoundException, ExclusionNotAllowedException;
 }
