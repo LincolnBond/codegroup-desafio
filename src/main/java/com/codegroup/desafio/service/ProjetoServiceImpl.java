@@ -70,6 +70,7 @@ public class ProjetoServiceImpl implements ProjetoService{
         projetoDB.setRisco(projeto.getRisco());
         projetoDB.setStatus(projeto.getStatus());
         projetoDB.setRisco(projeto.getRisco());
+        projetoDB.setGerente(projeto.getGerente());
 
         return this.projetoRepository.save(projetoDB);
 

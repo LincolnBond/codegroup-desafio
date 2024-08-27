@@ -40,8 +40,19 @@ public class Projeto {
     @Column(name = "risco",nullable = false)
     private String risco;
 
-    //private Pessoa gerente;
+    @OneToOne
+    @JoinColumn(name = "idgerente", referencedColumnName = "id")
+    private Pessoa gerente;
 
+    public Pessoa getGerente() {
+        if(gerente == null)
+            return new Pessoa();
+        return gerente;
+    }
+
+    public void setGerente(Pessoa gerente) {
+        this.gerente = gerente;
+    }
 
     public Long getId() {
         return id;

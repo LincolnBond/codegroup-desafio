@@ -3,7 +3,9 @@ package com.codegroup.desafio.controller;
 
 import com.codegroup.desafio.exception.ExclusionNotAllowedException;
 import com.codegroup.desafio.exception.ResourceNotFoundException;
+import com.codegroup.desafio.model.Pessoa;
 import com.codegroup.desafio.model.Projeto;
+import com.codegroup.desafio.service.PessoaService;
 import com.codegroup.desafio.service.ProjetoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,9 @@ public class RestController {
 
     @Autowired
     ProjetoService projetoService;
+
+    @Autowired
+    PessoaService pessoaService;
 
     /**
      *
@@ -89,5 +94,17 @@ public class RestController {
     @ResponseStatus(HttpStatus.OK)
     public Map<String, Boolean> deleteProjeto(@PathVariable(value = "id") Long projetoId) throws ResourceNotFoundException, ExclusionNotAllowedException {
         return this.projetoService.deleteProjeto(projetoId);
+    }
+
+    /**
+     *
+     * @param projeto
+     * @return
+     */
+    @PostMapping("/pessoas")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Pessoa createPessoa(@RequestBody Pessoa pessoa) {
+        return this.pessoaService.savePessoa(pessoa);
+
     }
 }

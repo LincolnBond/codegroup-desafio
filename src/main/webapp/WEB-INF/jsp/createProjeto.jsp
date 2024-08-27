@@ -38,6 +38,17 @@
             	</div>
             </div>
             <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3" for="gerente">Gerente</label>
+                        <div class="col-md-6">
+                           <form:select  path="gerente" name="gerente" class="form-control input-sm" required="required" id="gerente">
+                               <form:option value=""> --SELECT--</form:option>
+                               <form:options items="${pessoas}" itemLabel="nome" itemValue="id"/>
+                             </form:select>
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
                 <div class="form-group col-md-12">
                     <label class="col-md-3" for="risco">Risco</label>
                     <div class="col-md-6">
@@ -67,33 +78,7 @@
                 </div>
             </div>
 
-            <div class="row">
-            	<div class="form-group col-md-12">
-            		<label class="col-md-3" for="dataInicio">Data inicio</label>
-            		<div class="col-md-6">
-            			<form:input type="date" path="dataInicio" id="dataInicio"
-            				class="form-control input-sm" required="required" />
-            		</div>
-            	</div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-12">
-                    <label class="col-md-3" for="dataFim">Data fim</label>
-                    <div class="col-md-6">
-                        <form:input type="date" path="dataFim" id="dataFim"
-                            class="form-control input-sm" required="required" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-12">
-                    <label class="col-md-3" for="dataPrevisaoFim">Data previsão de fim</label>
-                    <div class="col-md-6">
-                        <form:input type="date" path="dataPrevisaoFim" id="dataPrevisaoFim"
-                            class="form-control input-sm" required="required" />
-                    </div>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="form-group col-md-12">
                     <label class="col-md-3" for="descricao">Descrição</label>
@@ -112,6 +97,35 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="dataInicio">Data inicio</label>
+                    <div class="col-md-6">
+                        <form:input type="date" path="dataInicio" id="dataInicio"
+                            class="form-control input-sm" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="dataFim">Data fim</label>
+                    <div class="col-md-6">
+                        <form:input type="date" path="dataFim" id="dataFim"
+                            class="form-control input-sm" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="dataPrevisaoFim">Data previsão de fim</label>
+                    <div class="col-md-6">
+                        <form:input type="date" path="dataPrevisaoFim" id="dataPrevisaoFim"
+                            class="form-control input-sm"  />
+                    </div>
+                </div>
+            </div>
+
             <div class="row p-2">
             	<div class="col-md-2">
             		<button type="submit" value="Criar" class="btn btn-success">Salvar</button>
