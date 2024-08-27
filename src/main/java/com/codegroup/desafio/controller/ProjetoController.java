@@ -104,4 +104,49 @@ public class ProjetoController {
 
 		return "redirect:/listaProjetos";
 	}
+
+
+	/*
+	@GetMapping("/projetos")
+	@ResponseBody
+	public List<Projeto> findAll() {
+
+		return this.projetoService.findAll();
+	}
+
+
+	@GetMapping("/projetos/{id}")
+	@ResponseBody
+	public ResponseEntity<Projeto> findById(@PathVariable(value = "id") Long projetoId)
+			throws ResourceNotFoundException {
+
+		Projeto projeto = this.projetoService.findById(projetoId);
+
+		return ResponseEntity.ok().body(projeto);
+	}
+
+
+	@PostMapping("/projetos")
+	@ResponseBody
+	public Projeto createProjeto(@RequestBody Projeto projeto) {
+		return this.projetoService.saveProjeto(projeto);
+
+	}
+
+
+	@PutMapping("/projetos/{id}")
+	@ResponseBody
+	public ResponseEntity<Projeto> updateProjeto(@PathVariable(value = "id") Long projetoId, @RequestBody Projeto projeto) throws ResourceNotFoundException {
+		return ResponseEntity.ok(this.projetoService.updateProjeto(projetoId, projeto));
+
+	}
+
+
+	@DeleteMapping("/projetos/{id}")
+	@ResponseBody
+	public Map<String, Boolean> deleteProjeto(@PathVariable(value = "id") Long projetoId) throws ResourceNotFoundException, ExclusionNotAllowedException {
+		return this.projetoService.deleteProjeto(projetoId);
+	}
+	*/
+
 }
