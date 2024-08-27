@@ -3,7 +3,9 @@ package com.codegroup.desafio.controller;
 import com.codegroup.desafio.Constantes;
 import com.codegroup.desafio.exception.ExclusionNotAllowedException;
 import com.codegroup.desafio.exception.ResourceNotFoundException;
+import com.codegroup.desafio.model.Pessoa;
 import com.codegroup.desafio.model.Projeto;
+import com.codegroup.desafio.service.PessoaService;
 import com.codegroup.desafio.service.ProjetoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class ProjetoController {
 	@Autowired
 	ProjetoService projetoService;
 
+	@Autowired
+	PessoaService pessoaService;
+
 	@GetMapping({"/","listaProjetos"})
 	public String listaProjetos(Model model, @ModelAttribute("message") String message) {
 		List<Projeto> projetos = this.projetoService.findAll();
@@ -36,6 +41,9 @@ public class ProjetoController {
 	@GetMapping("/createProjeto")
 	public String createProjeto(Model model) {
 		model.addAttribute("projeto", new Projeto());
+
+		List<Pessoa> pessoas = this.pessoaService.findAll();
+		model.addAttribute("pessoas", pessoas);
 		return "createProjeto";
 	}
 
@@ -60,6 +68,8 @@ public class ProjetoController {
 		try {
 			Projeto projeto = projetoService.findById(id);
 			model.addAttribute("projeto",projeto);
+			List<Pessoa> pessoas = this.pessoaService.findAll();
+			model.addAttribute("pessoas", pessoas);
 		} catch (ResourceNotFoundException e) {
 			redirectAttributes.addFlashAttribute("status", Constantes.ERRO);
 			redirectAttributes.addFlashAttribute("mensagem", e.getMessage());

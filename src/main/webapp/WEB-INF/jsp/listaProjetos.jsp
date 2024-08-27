@@ -48,6 +48,7 @@
             		<th>Data previsão fim</th>
             		<th>Orçamento</th>
             		<th>Status</th>
+            		<th>Gerente</th>
             		<th>Editar</th>
             		<th>Excluir</th>
             	</tr>
@@ -63,6 +64,7 @@
                 		<td>${projeto.dataPrevisaoFim}</td>
                 		<td>${projeto.orcamento}</td>
                 		<td>${projeto.status}</td>
+                		<td>${projeto.gerente.nome}</td>
                 		<td><button type="button" class="btn btn-primary">
                                 <a href="/editarProjeto/${projeto.id}">Editar</a>
                 		</button></td>
