@@ -34,7 +34,6 @@ public class ProjetoController {
 	public String listaProjetos(Model model, @ModelAttribute("message") String message) {
 		List<Projeto> projetos = this.projetoService.findAll();
 		model.addAttribute("projetos", projetos);
-		model.addAttribute("message", message);
 		return "listaProjetos";
 	}
 

@@ -33,7 +33,7 @@
                          <label class="col-md-3" for="gerente">Gerente</label>
                          <div class="col-md-6">
                             <form:select  path="gerente" name="gerente" class="form-control input-sm" required="required" id="gerente">
-                                <form:option value=""> --SELECT--</form:option>
+                                <form:option value="">--SELECT--</form:option>
                                 <form:options items="${pessoas}" itemLabel="nome" itemValue="id"/>
                               </form:select>
                          </div>
@@ -43,11 +43,12 @@
                 <div class="form-group col-md-12">
                     <label class="col-md-3" for="risco">Risco</label>
                     <div class="col-md-6">
-                       <select class="form-select" name="risco" path="risco" id="risco">
-                         <option value="BAIXO">BAIXO</option>
-                         <option value="MEDIO">MEDIO</option>
-                         <option value="ALTO">ALTO</option>
-                       </select>
+                       <form:select  path="risco" name="risco" class="form-control input-sm" required="required" id="risco">
+                              <form:option value="">--SELECT--</form:option>
+                              <form:option value="BAIXO">BAIXO</form:option>
+                              <form:option value="MEDIO">MEDIO</form:option>
+                              <form:option value="ALTO">ALTO</form:option>
+                       </form:select>
                     </div>
                 </div>
             </div>
@@ -55,16 +56,17 @@
                 <div class="form-group col-md-12">
                     <label class="col-md-3" for="status">Status</label>
                     <div class="col-md-6">
-                        <select class="form-select" name="status" path="status" id="status">
-                         <option value="ANALISE">ANÁLISE</option>
-                         <option value="ANALISE_REALIZADA">ANÁLISE REALIZADA</option>
-                         <option value="ANALISE_APROVADA">ANÁLISE APROVADA</option>
-                         <option value="INICIADO">INICIADO</option>
-                         <option value="PLANEJADO">PLANEJADO</option>
-                         <option value="ANDAMENTO">ANDAMENTO</option>
-                         <option value="ENCERRADO">ENCERRADO</option>
-                         <option value="CANCELADO">CANCELADO</option>
-                       </select>
+                        <form:select  path="status" name="status" class="form-control input-sm" required="required" id="status">
+                                <form:option value="">--SELECT--</form:option>
+                                <form:option value="ANALISE">ANÁLISE</form:option>
+                                <form:option value="ANALISE_REALIZADA">ANÁLISE REALIZADA</form:option>
+                                <form:option value="ANALISE_APROVADA">ANÁLISE APROVADA</form:option>
+                                <form:option value="INICIADO">INICIADO</form:option>
+                                <form:option value="PLANEJADO">PLANEJADO</form:option>
+                                <form:option value="ANDAMENTO">ANDAMENTO</form:option>
+                                <form:option value="ENCERRADO">ENCERRADO</form:option>
+                                <form:option value="CANCELADO">CANCELADO</form:option>
+                         </form:select>
                     </div>
                 </div>
             </div>
@@ -93,7 +95,7 @@
                 <div class="form-group col-md-12">
                     <label class="col-md-3" for="dataInicio">Data inicio</label>
                     <div class="col-md-6">
-                        <form:input type="date" name="dataInicio" path="dataInicio" id="dataInicio"
+                        <form:input pattern="dd/MM/yyyy" type="date" name="dataInicio" path="dataInicio" id="dataInicio"
                             class="form-control input-sm"  />
                     </div>
                 </div>
